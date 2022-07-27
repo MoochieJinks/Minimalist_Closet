@@ -8,3 +8,10 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "closet" (
+	"id" SERIAL PRIMARY KEY,
+	"type" VARCHAR (64),
+	"color" VARCHAR (32),
+	"user_id" integer
+);
