@@ -8,14 +8,14 @@ function* addClothes(action){
     yield put({ type: 'FETCH_CLOSET', payload: response.data });
   }
     catch( err) {
-      console.log(err)
+      console.log('error in addClothes saga', err);
     }
 }
 
 function* deleteClothes(action) {
   console.log('in deleteClothes saga', action);
   try {
-    yield axios.delete('/api/closet', action.payload);
+    const response = yield axios.delete('/api/closet', action.payload);
     yield put({ type: 'FETCH_CLOSET' });
   }
   catch( err ){
@@ -31,7 +31,18 @@ function* getCloset(action) {
     yield put({ type: 'SET_CLOSET', payload: response.data });
   } 
     catch (err) {
-    console.log('error in GET closet saga', err);
+    console.log('error in getCloset saga', err);
+  }
+}
+
+function* updateClothes(action) {
+  console.log('in updateClothes saga', action);
+  try {
+    const response = yield axios.put('/api/closet', action.payload);
+    yield put({ type: 'FETCH_CLOSET' });
+  }
+  catch( err ){
+    console.log('error in updateClothes saga', err);
   }
 }
 
@@ -40,6 +51,7 @@ function* getAllClosetsSaga() {
     yield takeEvery('FETCH_CLOSET', getCloset);
     yield takeEvery('ADD_CLOTHES', addClothes);
     yield takeEvery('DELETE_CLOTHES', deleteClothes);
+    yield takeEvery('UPDATE_CLOTHES', updateClothes);
 }
 
 export default getAllClosetsSaga;
