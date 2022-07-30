@@ -19,4 +19,22 @@ router.get('/', (req, res) => {
     }))
 })
 
+router.post( '/', (req, res) => {
+    console.log( 'in POST /closet', req.body );
+    const queryString = `INSERT INTO closet ( type, color, size, description, user_id ) VALUES ( $1, $2, $3, $4, $5 );`;
+    const values = [req.body.type, req.body.color, req.body.size, req.body.description, req.body.user_id ];
+    pool.query(queryString, values)
+    .then(results => {
+        console.log( 'added to closet', results );
+        res.sendStatus(201);
+    }).catch(( err ) => {
+        console.log( 'error in POST /closet', err );
+        res.sendStatus( 500 );
+    })
+})
+
+router.delete( '/:id', (req, res) => {
+    
+})
+
 module.exports = router

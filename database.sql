@@ -15,3 +15,11 @@ CREATE TABLE "closet" (
 	"color" VARCHAR (32),
 	"user_id" integer
 );
+
+SELECT * FROM closet WHERE user_id = $1; -- allows us to select all items in the (logged in) user's closet
+
+INSERT INTO closet ( type, color, size, description, user_id ) VALUES ( $1, $2, $3, $4, $5 ); -- allows us to insert new items into the (logged in) user's closet
+
+UPDATE closet SET type = $1, color = $2, size = $3, description = $4 WHERE id = $5; -- allows us to update an item in the (logged in) user's closet
+
+DELETE FROM closet WHERE id = $1; -- allows us to delete an item in the (logged in) user's closet

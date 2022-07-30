@@ -17,7 +17,6 @@ function ClosetPage(props) {
     const closetReducer = useSelector((store) => store.closetReducer);
     const user = useSelector((store) => store.user);
 
-
     // actions
     useEffect( () => {
         getCloset();
