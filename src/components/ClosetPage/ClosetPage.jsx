@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react';
 // component imports
 
 // MUI imports
+import Button from '@material-ui/core/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -41,24 +42,25 @@ function ClosetPage(props) {
         dispatch({type: 'FETCH_CLOSET' });
     }
 
+    const deleteClothes = (closetID) => {
+        const deletePayload = {
+            closetID: closetID
+        }
+        dispatch({ type: 'DELETE_CLOTHES', payload: deletePayload });
+      }
+    
+    //   const updateClothes = () => {
+    //     console.log( 'in updateClothes');
+    //     dispatch({ type: 'UPDATE_CLOTHES', payload: newClothes });
+    //   }
+
   return (
     <div>
         <div>
             <h2>Here's what is currently in your closet!</h2>
                 {/* <Grid container display={"flex"} wrap={"wrap"} justifyContent={"space-evenly"} alignContent={"center"} spacing={5} padding={3}>
-                    {closetReducer.closets.map((closet) => {}
+
                 </Grid> */}
-        </div>
-        <div className='map'>
-            {/* <ul>
-                {closetReducer.map((closet) => {
-                    return (
-                        <li>
-                            <h3>Clothing Type: {closet.type}, Color: {closet.color}, Size: {closet.size}, Other info: {closet.description}</h3>
-                        </li>
-                    )
-                })}
-            </ul> */}
         </div>
         <div className='MUI-table'>
             <TableContainer component={Paper}>
@@ -77,7 +79,7 @@ function ClosetPage(props) {
                             return (
                                 <TableRow key={closet.id}>
                                     <TableCell component="th" scope="row">
-                                        {closet.user_id === user.id ? <h3>{closet.id}</h3> : null}
+                                        {closet.user_id === user.id ? <h3>{closet.id}</h3> : null}<Button className="delete-clothes-button" onClick={() => deleteClothes(closet.id)}>Do</Button>
                                     </TableCell>
                                     <TableCell align="left">{closet.type}</TableCell>
                                     <TableCell align="left">{closet.color}</TableCell>

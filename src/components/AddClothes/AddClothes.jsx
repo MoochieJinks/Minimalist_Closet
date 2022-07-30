@@ -34,10 +34,10 @@ function AddClothes(props) {
     dispatch({ type: 'ADD_CLOTHES', payload: newClothes });
   }
 
-  // const deleteClothes = () => {
-  //   console.log( 'in deleteClothes');
-  //   dispatch({ type: 'DELETE_CLOTHES', payload: newClothes });
-  // }
+  const deleteClothes = () => {
+    console.log( 'in deleteClothes');
+    dispatch({ type: 'DELETE_CLOTHES', payload: newClothes });
+  }
 
   const updateClothes = () => {
     console.log( 'in updateClothes');

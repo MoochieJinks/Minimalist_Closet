@@ -13,10 +13,10 @@ function* addClothes(action){
 }
 
 function* deleteClothes(action) {
-  console.log('in deleteClothes saga', action);
+  console.log('in deleteClothes saga', action.payload.closetID);
   try {
-    const response = yield axios.delete('/api/closet', action.payload);
-    yield put({ type: 'FETCH_CLOSET' });
+    const response = yield axios.delete(`/api/closet/${action.payload.closetID}`);
+    yield put({ type: 'FETCH_CLOSET', payload: response.data });
   }
   catch( err ){
     console.log('error in deleteClothes saga', err);
