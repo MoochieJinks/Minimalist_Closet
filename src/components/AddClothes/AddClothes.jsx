@@ -34,6 +34,16 @@ function AddClothes(props) {
     dispatch({ type: 'ADD_CLOTHES', payload: newClothes });
   }
 
+  // const deleteClothes = () => {
+  //   console.log( 'in deleteClothes');
+  //   dispatch({ type: 'DELETE_CLOTHES', payload: newClothes });
+  // }
+
+  const updateClothes = () => {
+    console.log( 'in updateClothes');
+    dispatch({ type: 'UPDATE_CLOTHES', payload: newClothes });
+  }
+
   return (
     <div>
       <h2>Add a new item to your closet!</h2>
@@ -71,6 +81,8 @@ function AddClothes(props) {
         </select>
         <input className="description-input" type="text" placeholder="description" onChange={ setDescription }></input>
         <button className="add-clothes-button" onClick={ addClothes }>Add Clothes</button>
+        {/* <button className="delete-clothes-button" onClick={ deleteClothes }>Delete Clothes</button> */}
+        {/* <button className="update-clothes-button" onClick={ updateClothes }>Update Clothes</button> */}
       </div>
       <h2>Here's what's currently in the closet!</h2>
       <ClosetPage />

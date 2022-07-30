@@ -12,6 +12,17 @@ function* addClothes(action){
     }
 }
 
+function* deleteClothes(action) {
+  console.log('in deleteClothes saga', action);
+  try {
+    yield axios.delete('/api/closet', action.payload);
+    yield put({ type: 'FETCH_CLOSET' });
+  }
+  catch( err ){
+    console.log('error in deleteClothes saga', err);
+  }
+}
+
 // this saga will send the id of the user to the server and get the closet content for that user
 function* getCloset(action) {
   // console.log( 'in getCloset saga');
@@ -28,6 +39,7 @@ function* getCloset(action) {
 function* getAllClosetsSaga() {
     yield takeEvery('FETCH_CLOSET', getCloset);
     yield takeEvery('ADD_CLOTHES', addClothes);
+    yield takeEvery('DELETE_CLOTHES', deleteClothes);
 }
 
 export default getAllClosetsSaga;
