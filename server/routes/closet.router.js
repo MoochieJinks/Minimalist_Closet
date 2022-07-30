@@ -33,8 +33,30 @@ router.post( '/', (req, res) => {
     })
 })
 
+router.put( '/:id', (req, res) => {
+    console.log( 'in PUT /closet', req.body );
+    const queryString = `UPDATE closet SET type = $1, color = $2, size = $3, description = $4 WHERE id = $5;`;
+    const values = [req.body.type, req.body.color, req.body.size, req.body.description, req.params.id];
+    pool.query(queryString, values)
+    .then(results => {
+        console.log( 'updated closet', results );
+        res.sendStatus(201);
+    }).catch((err => {
+        console.log( 'error in PUT /closet', err );
+        res.sendStatus(500);
+    }))
+})
+
 router.delete( '/:id', (req, res) => {
-    
+    console.log(req.params)
+    let queryString = `DELETE FROM closet WHERE id = $1;`;
+    let values = [req.params.id];
+    pool.query(queryString, values).then(results => {
+        res.sendStatus( 201 );
+    }).catch(result => {
+        console.log(err)
+        res.sendStatus(500);
+    })
 })
 
 module.exports = router
