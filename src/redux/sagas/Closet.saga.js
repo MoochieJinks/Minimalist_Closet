@@ -13,10 +13,10 @@ function* addClothes(action){
 }
 
 function* deleteClothes(action) {
-  console.log('in deleteClothes saga', action);
+  console.log('in deleteClothes saga', action.payload.closetID);
   try {
-    const response = yield axios.delete('/api/closet', action.payload);
-    yield put({ type: 'FETCH_CLOSET' });
+    const response = yield axios.delete(`/api/closet/${action.payload.closetID}`);
+    yield put({ type: 'FETCH_CLOSET', payload: response.data });
   }
   catch( err ){
     console.log('error in deleteClothes saga', err);
@@ -34,11 +34,13 @@ function* getCloset(action) {
     console.log('error in getCloset saga', err);
   }
 }
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 function* updateClothes(action) {
   console.log('in updateClothes saga', action);
   try {
     const response = yield axios.put('/api/closet', action.payload);
+    yield delay(400);
     yield put({ type: 'FETCH_CLOSET' });
   }
   catch( err ){
@@ -55,3 +57,4 @@ function* getAllClosetsSaga() {
 }
 
 export default getAllClosetsSaga;
+

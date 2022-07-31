@@ -34,10 +34,10 @@ function AddClothes(props) {
     dispatch({ type: 'ADD_CLOTHES', payload: newClothes });
   }
 
-  // const deleteClothes = () => {
-  //   console.log( 'in deleteClothes');
-  //   dispatch({ type: 'DELETE_CLOTHES', payload: newClothes });
-  // }
+  const deleteClothes = () => {
+    console.log( 'in deleteClothes');
+    dispatch({ type: 'DELETE_CLOTHES', payload: newClothes });
+  }
 
   const updateClothes = () => {
     console.log( 'in updateClothes');
@@ -84,8 +84,6 @@ function AddClothes(props) {
         {/* <button className="delete-clothes-button" onClick={ deleteClothes }>Delete Clothes</button> */}
         {/* <button className="update-clothes-button" onClick={ updateClothes }>Update Clothes</button> */}
       </div>
-      <h2>Here's what's currently in the closet!</h2>
-      <ClosetPage />
     </div>
   );
 }

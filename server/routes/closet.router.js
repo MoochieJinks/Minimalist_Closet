@@ -48,7 +48,7 @@ router.put( '/:id', (req, res) => {
 })
 
 router.delete( '/:id', (req, res) => {
-    console.log(req.params)
+    console.log('in the params',req.params);
     let queryString = `DELETE FROM closet WHERE id = $1;`;
     let values = [req.params.id];
     pool.query(queryString, values).then(results => {
