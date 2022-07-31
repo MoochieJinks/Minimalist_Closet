@@ -65,8 +65,6 @@ function EditCloset(props) {
 
   const editCloset = () => {
     console.log( 'in EditCloset');
-    // dispatch({ type: 'UPDATE_CLOTHES', payload: newClothes });
-    handleClose();
     const newClothes = ({
       id: props.closet.id,
       type: type,
@@ -75,13 +73,12 @@ function EditCloset(props) {
       description: description,
       user_id: store.user.id
     })
-    console.log(newClothes);
+    dispatch({ type: 'UPDATE_CLOTHES', payload: newClothes });
+    handleClose();
   }
 
   return (
     <div>
-      <h2>Edit an existing item to your closet!</h2>
-      <p>{JSON.stringify(props.closet)}</p>
       <div>
         <Button variant="outlined" onClick={handleClickOpen}>Edit</Button>
         <Dialog open={open} onClose={handleClose} style={{height: "1000px"}}>

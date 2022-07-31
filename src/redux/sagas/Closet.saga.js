@@ -37,9 +37,9 @@ function* getCloset(action) {
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 function* updateClothes(action) {
-  console.log('in updateClothes saga', action);
+  console.log('in updateClothes saga', action.payloa);
   try {
-    const response = yield axios.put('/api/closet', action.payload);
+    const response = yield axios.put(`/api/closet`, action.payload);
     yield delay(400);
     yield put({ type: 'FETCH_CLOSET' });
   }

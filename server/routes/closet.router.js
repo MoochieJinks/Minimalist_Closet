@@ -33,10 +33,10 @@ router.post( '/', (req, res) => {
     })
 })
 
-router.put( '/:id', (req, res) => {
+router.put( '/', (req, res) => {
     console.log( 'in PUT /closet', req.body );
     const queryString = `UPDATE closet SET type = $1, color = $2, size = $3, description = $4 WHERE id = $5;`;
-    const values = [req.body.type, req.body.color, req.body.size, req.body.description, req.params.id];
+    const values = [req.body.type, req.body.color, req.body.size, req.body.description, req.body.id];
     pool.query(queryString, values)
     .then(results => {
         console.log( 'updated closet', results );

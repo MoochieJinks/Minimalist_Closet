@@ -36,10 +36,6 @@ function Nav() {
               Add Clothes
             </Link>
 
-            <Link className="navLink" to="/editCloset">
-              Edit Clothes
-            </Link>
-
             <LogOutButton className="navLink" />
           </>
         )}
