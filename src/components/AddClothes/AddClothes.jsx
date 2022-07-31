@@ -84,8 +84,6 @@ function AddClothes(props) {
         {/* <button className="delete-clothes-button" onClick={ deleteClothes }>Delete Clothes</button> */}
         {/* <button className="update-clothes-button" onClick={ updateClothes }>Update Clothes</button> */}
       </div>
-      <h2>Here's what's currently in the closet!</h2>
-      <ClosetPage />
     </div>
   );
 }

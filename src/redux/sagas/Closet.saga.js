@@ -34,11 +34,13 @@ function* getCloset(action) {
     console.log('error in getCloset saga', err);
   }
 }
+const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 function* updateClothes(action) {
   console.log('in updateClothes saga', action);
   try {
     const response = yield axios.put('/api/closet', action.payload);
+    yield delay(400);
     yield put({ type: 'FETCH_CLOSET' });
   }
   catch( err ){
@@ -55,3 +57,4 @@ function* getAllClosetsSaga() {
 }
 
 export default getAllClosetsSaga;
+

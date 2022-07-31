@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 
 
 // component imports
+import EditCloset from '../EditCloset/EditCloset';
 
 // MUI imports
 import Button from '@material-ui/core/Button';
@@ -16,13 +17,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-// import { colors, Grid } from '@mui/material'
-// import Button from '@mui/material/Button'
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import Typography from '@mui/material/Typography';
-
 // This component will display all of the user's closet items
 function ClosetPage(props) {
     // hooks
@@ -32,10 +26,14 @@ function ClosetPage(props) {
     const closetReducer = useSelector((store) => store.closetReducer);
     const user = useSelector((store) => store.user);
 
+    // MUI consts
+
+
     // actions
     useEffect( () => {
         getCloset();
     })
+
 
     const getCloset = () => {
         // console.log('getCloset');
@@ -48,11 +46,12 @@ function ClosetPage(props) {
         }
         dispatch({ type: 'DELETE_CLOTHES', payload: deletePayload });
       }
+
     
-    //   const updateClothes = () => {
-    //     console.log( 'in updateClothes');
-    //     dispatch({ type: 'UPDATE_CLOTHES', payload: newClothes });
-    //   }
+      const updateClothes = () => {
+        console.log( 'in updateClothes');
+        dispatch({ type: 'UPDATE_CLOTHES', payload: newClothes });
+      }
 
   return (
     <div>
@@ -79,7 +78,8 @@ function ClosetPage(props) {
                             return (
                                 <TableRow key={closet.id}>
                                     <TableCell component="th" scope="row">
-                                        {closet.user_id === user.id ? <h3>{closet.id}</h3> : null}<Button className="delete-clothes-button" onClick={() => deleteClothes(closet.id)}>Do</Button>
+                                        <EditCloset closet={closet}/>
+                                        {closet.user_id === user.id ? <h3>{closet.id}</h3> : null}<Button className="delete-clothes-button" onClick={() => deleteClothes(closet.id)}>Delete</Button>
                                     </TableCell>
                                     <TableCell align="left">{closet.type}</TableCell>
                                     <TableCell align="left">{closet.color}</TableCell>
@@ -97,8 +97,3 @@ function ClosetPage(props) {
 }
 
 export default ClosetPage;
-
-{/* <TableCell>Clothing Type: {closet.type}</TableCell>
-<TableCell>Clothing Color: {closet.color}</TableCell>
-<TableCell>Clothing Size: {closet.size}</TableCell>
-<TableCell>Other Info: {closet.description}</TableCell> */}
