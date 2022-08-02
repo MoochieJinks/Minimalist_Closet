@@ -21,15 +21,19 @@ function Nav() {
           </Link>
         )}
 
+        <Link className="navLink" to="/about">
+          About Minimalist_Closet
+        </Link>
+
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
             <Link className="navLink" to="/user">
-              Home
+              View Closet
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Generate Outfit
             </Link>
 
             <Link className="navLink" to="/addClothes">
@@ -39,10 +43,7 @@ function Nav() {
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
+                
       </div>
     </div>
   );

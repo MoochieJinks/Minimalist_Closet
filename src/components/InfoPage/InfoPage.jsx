@@ -8,7 +8,8 @@ import React from 'react';
 function InfoPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <h1>Outfit Generator</h1>
+      <p> This is where the outfit Generator will be</p>
     </div>
   );
 }

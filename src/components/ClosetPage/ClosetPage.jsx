@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react';
 
 // component imports
 import EditCloset from '../EditCloset/EditCloset';
+// import AddClothes from '../AddClothes/AddClothes';
 
 // MUI imports
 import Button from '@material-ui/core/Button';
@@ -16,6 +17,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+
+import './ClosetPage.css';
 
 // This component will display all of the user's closet items
 function ClosetPage(props) {
@@ -63,7 +66,7 @@ function ClosetPage(props) {
         </div>
         <div className='MUI-table'>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 350 }} aria-label="simple table">
+                <Table sx={{ minWidth: 350 }} aria-label="simple table" style={{backgroundColor: '#ADB5BB', border: '1px solid'}}>
                     <TableHead>
                         <TableRow>
                             <TableCell>Item Number </TableCell>
@@ -77,14 +80,15 @@ function ClosetPage(props) {
                         {closetReducer.map((closet) => {
                             return (
                                 <TableRow key={closet.id}>
-                                    <TableCell component="th" scope="row">
-                                        <EditCloset closet={closet}/>
-                                        {closet.user_id === user.id ? <h3>{closet.id}</h3> : null}<Button className="delete-clothes-button" onClick={() => deleteClothes(closet.id)}>Delete</Button>
+                                    <TableCell component="th" scope="row" style={{border: '.5px solid'}}>
+                                        <EditCloset closet={closet}/> 
+                                        <p></p>
+                                        {closet.user_id === user.id ? <h3>{closet.id}</h3> : null}<Button className="delete-clothes-button" onClick={() => deleteClothes(closet.id)} style={{border: '.5px solid', color: 'blue'}}>Delete</Button>
                                     </TableCell>
-                                    <TableCell align="left">{closet.type}</TableCell>
-                                    <TableCell align="left">{closet.color}</TableCell>
-                                    <TableCell align="left">{closet.size}</TableCell>
-                                    <TableCell align="left">{closet.description}</TableCell>
+                                    <TableCell align="left" className='tableCell'>{closet.type}</TableCell>
+                                    <TableCell align="left" className='tableCell'>{closet.color}</TableCell>
+                                    <TableCell align="left" className='tableCell'>{closet.size}</TableCell>
+                                    <TableCell align="left" className='tableCell'>{closet.description}</TableCell>
                                 </TableRow>
                             )
                         })}

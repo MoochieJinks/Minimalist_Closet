@@ -22,16 +22,6 @@ function EditCloset(props) {
   const [color, setColor] = useState();
   const [size, setSize] = useState();
   const [description, setDescription] = useState();
-
-  // const newClothes = ({
-  //   id: props.closet.id,
-  //   type: type,
-  //   color: color,
-  //   size: size,
-  //   description: description,
-  //   user_id: store.user.id
-  // })
-
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -88,10 +78,10 @@ function EditCloset(props) {
               To edit an existing item, please choose what you'd like to switch the item to.
             </DialogContentText>
               <Select
-              lableid="select-type"
+              labelid="select-type"
               id="type"
               value={type || props.closet.type}
-              lable="Select Type"
+              label="Select Type"
               onChange={setNewType}
               fullWidth>
                 <MenuItem value="t-shirt">t-shirt</MenuItem>
@@ -106,10 +96,10 @@ function EditCloset(props) {
                 <MenuItem value="slacks">slacks</MenuItem>
               </Select>
               <Select
-              lableid="select-color"
+              labelid="select-color"
               id="color"
               value={color || props.closet.color}
-              lable="Select Color"
+              label="Select Color"
               onChange={setNewColor}
               fullWidth>
                 <MenuItem value="red">red</MenuItem>
@@ -123,10 +113,10 @@ function EditCloset(props) {
                 <MenuItem value="pastel-yellow">pastel-yellow</MenuItem>
               </Select>
               <Select
-              lableid="select-size"
+              labelid="select-size"
               id="size"
               value={size || props.closet.size}
-              lable="Select Size"
+              label="Select Size"
               onChange={setNewSize}
               fullWidth>
                 <MenuItem value="small">small</MenuItem>
